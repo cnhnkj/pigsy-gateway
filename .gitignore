@@ -1,0 +1,47 @@
+### other ###
+target/
+bin/
+.mvn/
+Thumbs.db
+*.swp
+catalina.base_IS_UNDEFINED
+build/
+hs_err_pid*
+
+### log ###
+*.log
+*.bak
+
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.gradle
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+*.DS_Store
+
+### NetBeans ###
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+**/.flattened-pom.xml
