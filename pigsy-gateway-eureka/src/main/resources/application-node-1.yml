@@ -1,0 +1,13 @@
+server:
+  port: 11001
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: http://127.0.0.1:11002/eureka
+  instance:
+    prefer-ip-address: true
+  server:
+    enable-self-preservation: false

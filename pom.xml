@@ -27,9 +27,8 @@
   <name>pigsy-gateway</name>
   <modules>
 <!--    <module>pigsy-gateway-core</module>-->
-<!--    <module>pigsy-gateway-sso</module>-->
+<!--    <module>pigsy-gateway-auth</module>-->
     <module>pigsy-gateway-eureka</module>
-<!--    <module>pigsy-gateway-apollo</module>-->
   </modules>
 
   <organization>
