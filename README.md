@@ -18,6 +18,7 @@
 - `pigsy-gateway-apollo` 提供了配置中心功能，网关通过先从`apollo`模块实时获取配置数据，并且进行动态更新
 - `pigsy-gateway-auth` 提供了各种环境的权限认证的方式，可能认证要处理不同的业务逻辑，故独立成独立服务进行验证，把认证结果告知网关
 - `pigsy-gateway-sentry` 提供了错误的报警和统计展示功能
+- `pigsy-gateway-redis` 提供了缓存的功能
 - `pigsy-gateway-core` 提供了网关的4个模块的核心功能
 
 
