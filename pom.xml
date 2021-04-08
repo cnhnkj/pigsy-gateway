@@ -75,6 +75,7 @@
     <springdoc-openapi-ui.version>1.5.6</springdoc-openapi-ui.version>
     <java-jwt.version>3.4.1</java-jwt.version>
     <apollo.verion>1.8.0</apollo.verion>
+    <sentry.version>1.7.30</sentry.version>
 
 
     <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
@@ -114,6 +115,12 @@
         <groupId>com.ctrip.framework.apollo</groupId>
         <artifactId>apollo-client</artifactId>
         <version>${apollo.verion}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>io.sentry</groupId>
+        <artifactId>sentry-logback</artifactId>
+        <version>${sentry.version}</version>
       </dependency>
 
     </dependencies>
