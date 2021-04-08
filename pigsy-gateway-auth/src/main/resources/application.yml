@@ -1,0 +1,13 @@
+server:
+  port: 12001
+
+spring:
+  profiles:
+    active: test
+  application:
+    name: pigsy-auth
+
+logging:
+  file:
+    name: ${spring.application.name}
+

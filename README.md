@@ -10,7 +10,7 @@
 - `Spring-Cloud`的`Hoxton.SR10`版本
 - `Apollo`的`1.8.1`版本
 - `Sentry`的`21.3.0`版本
-- `Redis`的`5.0`版本
+- `Redis`的`5.0.8`版本
 
 # 模块
 
