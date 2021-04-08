@@ -60,15 +60,31 @@
     </dependency>
 
     <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-sleuth</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
     </dependency>
 
     <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-ui</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>com.auth0</groupId>
       <artifactId>java-jwt</artifactId>
-      <version>3.4.1</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.cnhnkj</groupId>
+      <artifactId>pigsy-gateway-common</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
 
   </dependencies>
 

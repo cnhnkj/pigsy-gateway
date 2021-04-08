@@ -1,0 +1,28 @@
+eureka:
+  client:
+    register-with-eureka: false
+    initial-instance-info-replication-interval-seconds: 20 # 服务启动之后20s后注册到eureka
+    instance-info-replication-interval-seconds: 10
+    registry-fetch-interval-seconds: 5
+    serviceUrl:
+      defaultZone: http://127.0.0.1:11001/eureka/,http://127.0.0.1:11002/eureka/
+  instance:
+    status-page-url-path: ${server.servlet.context-path:}/swagger-ui.html
+    home-page-url-path: ${server.servlet.context-path:}
+    health-check-url-path: ${server.servlet.context-path:}/actuator/health
+    prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 10
+    lease-renewal-interval-in-seconds: 5
+
+spring:
+  sleuth:
+    sampler:
+      probability: 1.0
+    enabled: true
+  jackson:
+    default-property-inclusion: non_null
+    deserialization:
+      fail-on-unknown-properties: false
+  redis:
+    host: 127.0.0.1
+    port: 6379
