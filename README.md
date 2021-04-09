@@ -1,10 +1,10 @@
-# 背景
+# *背景*
 惠农网之前的网关是基于zuul来进行开发的，zuul在市场上逐步被gateway所代替，异步模型更好的支持高并发场景，在替换的同时解决了一些遗留问题。
 
-# 架构
+# *架构*
 ![avatar](./docs/架构图.png)
 
-# 依赖
+# *依赖*
 
 - `Spring-Boot`的`2.3.9.RELEASE`版本
 - `Spring-Cloud`的`Hoxton.SR10`版本
@@ -12,7 +12,7 @@
 - `Sentry`的`21.3.0`版本
 - `Redis`的`5.0.8`版本
 
-# 模块
+# *模块*
 
 - `pigsy-gateway-eureka` 提供了核心的服务注册和发现功能，网关通过先从`eureka`模块获取数据，然后进行路由选择到具体的服务
 - `pigsy-gateway-apollo` 提供了配置中心功能，网关通过先从`apollo`模块实时获取配置数据，并且进行动态更新
@@ -22,10 +22,28 @@
 - `pigsy-gateway-core` 提供了网关的4个模块的核心功能
 
 
-# 功能结构图
+# *功能结构图*
 
 
-# 功能特点
+# *功能特点*
 
 
-# 关于
+# *关于*
+
+# *License*
+
+```
+Copyright 2014-2021 Hunan Huinong Technology Co.,Ltd.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
