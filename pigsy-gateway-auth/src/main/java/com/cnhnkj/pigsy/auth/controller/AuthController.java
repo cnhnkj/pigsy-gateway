@@ -29,6 +29,7 @@ public class AuthController {
       @RequestParam @Parameter(description = "要生成token的用户id") Long userId,
       @RequestParam @Parameter(description = "要生成token的用户名称") String username) {
     try {
+      log.info("path is /internal/auth/token/create, userId is {}, username is {}", userId, username);
       String token = tokenService.createToken(userId, username);
       return BaseResult.success(token);
     } catch (Exception e) {
@@ -42,6 +43,7 @@ public class AuthController {
   public BaseResult<UserInfo> getUserInfoByToken(
       @RequestParam @Parameter(description = "要用于获取userId所使用的token") String token) {
     try {
+      log.info("path is /internal/auth/userInfo/by/token, token is {}", token);
       UserInfo userInfo = tokenService.getUserInfoByToken(token);
       return BaseResult.success(userInfo);
     } catch (Exception e) {

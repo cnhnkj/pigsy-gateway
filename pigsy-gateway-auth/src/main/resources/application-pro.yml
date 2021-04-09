@@ -1,6 +1,6 @@
 eureka:
   client:
-    register-with-eureka: false
+    register-with-eureka: true
     initial-instance-info-replication-interval-seconds: 20 # 服务启动之后20s后注册到eureka
     instance-info-replication-interval-seconds: 10
     registry-fetch-interval-seconds: 5

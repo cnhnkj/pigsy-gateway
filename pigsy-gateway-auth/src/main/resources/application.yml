@@ -11,3 +11,4 @@ logging:
   file:
     name: ${spring.application.name}
 
+
