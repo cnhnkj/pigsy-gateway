@@ -20,6 +20,7 @@
 - `pigsy-gateway-sentry` 提供了错误的报警和统计展示功能
 - `pigsy-gateway-redis` 提供了缓存的功能
 - `pigsy-gateway-core` 提供了网关的4个模块的核心功能
+- `pigsy-gateway-common` 提供了一些公共的基础类和基础方法，方便整个项目进行使用
 
 
 # *功能结构图*
