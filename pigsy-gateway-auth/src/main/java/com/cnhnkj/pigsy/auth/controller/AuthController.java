@@ -36,7 +36,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @Slf4j
-@Tag(name = "用户token校验控制器")
+@Tag(name = "外部用户token校验控制器")
 @RestController
 @RequestMapping("/internal/auth")
 public class AuthController {
