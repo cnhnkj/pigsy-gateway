@@ -40,6 +40,9 @@ public class CommonConfig {
   //慢请求定义的时间，单位毫秒
   private Long slowLogTime = 2000L;
 
+  //cors跨域最长缓存时间
+  private Long corsMaxAge = 604800L;
+
   //禁止访问配置
   private ForbidInfo forbidInfo;
 
@@ -50,23 +53,24 @@ public class CommonConfig {
   public static class ForbidInfo {
 
     //禁止访问的api
-    private Set<String> apis;
+    private Set<String> apiSet;
     //禁止访问的header
-    private Set<String> headers;
+    private Set<String> headerSet;
     //禁止访问的ip
-    private Set<String> ips;
-
+    private Set<String> ipSet;
   }
 
   @Data
   public static class MaintenanceInfo {
 
+    //所排除的内部ip列表, 用于内部测试和回归维护服务是否正常
+    private Set<String> whiteIpSet;
     //维护中的服务列表
     private Set<String> services;
     //停机维护的开始时间 时间格式yyyy-MM-dd HH
-    private Set<String> startTime;
+    private String startTime;
     //停机维护的结束时间 时间格式yyyy-MM-dd HH
-    private Set<String> endTime;
+    private String endTime;
 
   }
 

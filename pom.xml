@@ -77,6 +77,9 @@
     <apollo.verion>1.8.0</apollo.verion>
     <sentry.version>1.7.30</sentry.version>
 
+    <commons-net.version>3.6</commons-net.version>
+
+
 
     <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
     <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
@@ -121,6 +124,12 @@
         <groupId>io.sentry</groupId>
         <artifactId>sentry-logback</artifactId>
         <version>${sentry.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>commons-net</groupId>
+        <artifactId>commons-net</artifactId>
+        <version>${commons-net.version}</version>
       </dependency>
 
     </dependencies>

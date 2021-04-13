@@ -15,32 +15,30 @@
  *
  */
 
-package com.cnhnkj.pigsy.common;
+package com.cnhnkj.pigsy.core.errors;
+
+import static com.cnhnkj.pigsy.core.errors.ErrorEnum.PIGSY_INNER_ERROR;
 
 /**
  * @author longzhe[longzhe@cnhnkj.com]
  */
 
-public enum BaseResultCode {
-  SUCCESS(0, "success"),
-  SERVER_INNER_ERROR(500000, "抱歉，服务器开了点小差，请稍后再试。"),
+public class PigsyGatewayException extends RuntimeException {
 
-  ;
+  private final String message;
 
   private final int code;
-  private final String msg;
 
-  BaseResultCode(int code, String msg) {
+  public PigsyGatewayException(String message) {
+    super(message);
+    this.message = message;
+    this.code = PIGSY_INNER_ERROR.getCode();
+  }
+
+  public PigsyGatewayException(int code, String message) {
+    super(message);
+    this.message = message;
     this.code = code;
-    this.msg = msg;
-  }
-
-  public String getMsg() {
-    return msg;
-  }
-
-  public int getCode() {
-    return code;
   }
 
 }
