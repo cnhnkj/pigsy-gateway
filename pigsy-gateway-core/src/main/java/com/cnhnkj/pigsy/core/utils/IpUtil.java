@@ -36,7 +36,7 @@ public class IpUtil {
 
     String xff = exchange.getRequest().getHeaders().getFirst(HeaderConstants.X_FORWARDED_FOR);
     if (StringUtils.isNotBlank(xff)) {
-      realIp = xff.split(",")[0].trim();
+      realIp = xff.split(",")[0].strip();
       return realIp;
     }
 
