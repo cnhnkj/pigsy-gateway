@@ -50,7 +50,7 @@ public class ResponseUtil {
       return objectMapper.writeValueAsString(errorEnum.setTraceId(MDC.get("traceId")));
     } catch (Exception e) {
       log.error(e.getMessage(), e);
-      return ErrorEnum.PIGSY_INNER_ERROR.toString();
+      return "{\"msg\":\"" + ErrorEnum.PIGSY_INNER_ERROR.getMsg() + "\", \"code\":"+ ErrorEnum.PIGSY_INNER_ERROR.getCode() + "}";
     }
   }
 

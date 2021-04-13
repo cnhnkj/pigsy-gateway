@@ -19,7 +19,6 @@ package com.cnhnkj.pigsy.core;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.mockito.Mockito.when;
 
 import com.cnhnkj.pigsy.core.constants.Constants;
 import com.cnhnkj.pigsy.core.constants.HeaderConstants;
@@ -50,6 +49,13 @@ public class GuardFilterTest {
   @Mock
   private GatewayFilterChain chain;
 
+
+  @Test
+  public void testErrorEnumString() {
+    String errorEnumString =
+        "{\"msg\":\"" + ErrorEnum.PIGSY_INNER_ERROR.getMsg() + "\", \"code\":" + ErrorEnum.PIGSY_INNER_ERROR.getCode() + "}";
+    assertThat(errorEnumString).isEqualTo("{\"msg\":\"网关未知错误\", \"code\":700500}");
+  }
 
   @Test
   public void testRequestRealIpFromRealIpHeader() {

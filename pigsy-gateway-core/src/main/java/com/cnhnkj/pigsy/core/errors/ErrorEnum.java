@@ -41,6 +41,7 @@ public enum ErrorEnum {
   SERVICE_NOT_FOUND(700404, "没有找到对应的服务"),
   ;
 
+
   private int code;
   private String msg;
   private String traceId;
