@@ -164,6 +164,6 @@ public class GuardFilter implements GlobalFilter, Ordered {
 
   @Override
   public int getOrder() {
-    return Constants.GLOBAL_GUARD_FILTER_ORDER;
+    return Constants.GlobalOrder.GUARD_FILTER_ORDER;
   }
 }

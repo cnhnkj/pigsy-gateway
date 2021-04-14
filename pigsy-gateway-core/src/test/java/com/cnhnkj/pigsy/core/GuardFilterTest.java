@@ -101,7 +101,7 @@ public class GuardFilterTest {
 
     filter.filter(exchange, chain);
 
-    assertThat(exchange.getResponse().getHeaders().getFirst(Constants.RESPONSE_CODE))
+    assertThat(exchange.getResponse().getHeaders().getFirst(Constants.Response.CODE))
         .isEqualTo(String.valueOf(ErrorEnum.REQUEST_URI_PATH_ERROR.getCode()));
 
     verifyNoMoreInteractions(chain);
@@ -114,7 +114,7 @@ public class GuardFilterTest {
 
     filter.filter(exchange, chain);
 
-    assertThat(exchange.getResponse().getHeaders().getFirst(Constants.RESPONSE_CODE))
+    assertThat(exchange.getResponse().getHeaders().getFirst(Constants.Response.CODE))
         .isEqualTo(String.valueOf(ErrorEnum.REAL_IP_INVALID.getCode()));
 
     verifyNoMoreInteractions(chain);
@@ -136,7 +136,7 @@ public class GuardFilterTest {
 
     filter.filter(exchange, chain);
 
-    assertThat(exchange.getResponse().getHeaders().getFirst(Constants.RESPONSE_CODE))
+    assertThat(exchange.getResponse().getHeaders().getFirst(Constants.Response.CODE))
         .isEqualTo(String.valueOf(ErrorEnum.IP_IS_FORBID.getCode()));
 
     verifyNoMoreInteractions(chain);

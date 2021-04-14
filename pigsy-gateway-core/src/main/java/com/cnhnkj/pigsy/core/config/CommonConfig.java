@@ -37,7 +37,7 @@ public class CommonConfig {
   //服务端最小支持版本（版本规则是 x.y.z）
   private String minimumSupportedVersion = "";
 
-  //慢请求定义的时间，单位毫秒
+  //慢请求定义的时间(单位毫秒)，用于打印日志
   private Long slowLogTime = 2000L;
 
   //cors跨域最长缓存时间

@@ -35,7 +35,7 @@ public class ResponseUtil {
 
   public static Mono<Void> sendErrorMsg(ObjectMapper objectMapper, ServerHttpResponse response,
       ErrorEnum errorEnum) {
-    response.getHeaders().add(Constants.RESPONSE_CODE, String.valueOf(errorEnum.getCode()));
+    response.getHeaders().add(Constants.Response.CODE, String.valueOf(errorEnum.getCode()));
     return response.writeWith(
         Flux.just(ResponseUtil.serviceExceptionResponse(objectMapper, errorEnum))
             .map(bx -> {
