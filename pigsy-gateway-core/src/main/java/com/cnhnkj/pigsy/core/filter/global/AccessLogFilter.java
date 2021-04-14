@@ -69,11 +69,6 @@ public class AccessLogFilter implements GlobalFilter, Ordered {
         .then(Mono.fromRunnable(realAccessLog(exchange, rawPath, requestTime)));
   }
 
-  @Override
-  public int getOrder() {
-    return Constants.GlobalOrder.ACCESS_LOG_ORDER;
-  }
-
   private Runnable realAccessLog(ServerWebExchange exchange, String rawPath, long requestTime) {
     return () -> {
       ServerHttpResponse httpResponse = exchange.getResponse();
@@ -119,5 +114,10 @@ public class AccessLogFilter implements GlobalFilter, Ordered {
         log.error(e.getMessage(), e);
       }
     };
+  }
+
+  @Override
+  public int getOrder() {
+    return Constants.GlobalOrder.ACCESS_LOG_ORDER;
   }
 }
