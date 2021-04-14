@@ -86,7 +86,7 @@ public class GuardFilter implements GlobalFilter, Ordered {
     try {
       checkMaintenanceServices(realIp, path, serviceIdIndex);
     } catch (PigsyGatewayException e) {
-      return ResponseUtil.sendErrorMsg(objectMapper, response, ErrorEnum.SERVICE_IS_MAINTENANCE);
+      return ResponseUtil.sendErrorMsg(objectMapper, response, ErrorEnum.SERVICE_IS_MAINTENANCE.setMsg(e.getMessage()));
     }
 
     //检查api是否正常
@@ -127,10 +127,7 @@ public class GuardFilter implements GlobalFilter, Ordered {
     String serviceId = path.substring(1, serviceIdIndex);
     Set<String> maintenanceServices = commonConfig.getMaintenanceInfo().getServices();
     if (StringUtils.isNotBlank(serviceId) && null != maintenanceServices && maintenanceServices.contains(serviceId)) {
-
-      LocalDateTime startTime = null;
-      LocalDateTime endTime = null;
-
+      LocalDateTime startTime = null, endTime = null;
       String maintenanceStartTime = commonConfig.getMaintenanceInfo().getStartTime();
       String maintenanceEndTime = commonConfig.getMaintenanceInfo().getEndTime();
       if (Strings.isNotEmpty(maintenanceStartTime) && Strings.isNotEmpty(maintenanceEndTime)) {

@@ -20,12 +20,15 @@ package com.cnhnkj.pigsy.core;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 
+import com.cnhnkj.pigsy.core.config.CommonConfig;
+import com.cnhnkj.pigsy.core.config.CommonConfig.ForbidInfo;
 import com.cnhnkj.pigsy.core.constants.Constants;
 import com.cnhnkj.pigsy.core.constants.HeaderConstants;
 import com.cnhnkj.pigsy.core.errors.ErrorEnum;
 import com.cnhnkj.pigsy.core.filter.global.GuardFilter;
 import com.cnhnkj.pigsy.core.utils.IpUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.Set;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -115,5 +118,43 @@ public class GuardFilterTest {
         .isEqualTo(String.valueOf(ErrorEnum.REAL_IP_INVALID.getCode()));
 
     verifyNoMoreInteractions(chain);
+  }
+
+  @Test
+  public void testGuardFilterInForbidIps() {
+    ServerWebExchange exchange = MockServerWebExchange.from(MockServerHttpRequest.get("/pigsy-test/hello")
+        .header(HeaderConstants.REMOTE_IP, "11.22.33.44").build());
+
+    ReflectionTestUtils.setField(filter, "objectMapper", new ObjectMapper());
+
+    CommonConfig commonConfig = new CommonConfig();
+    ForbidInfo forbidInfo = new ForbidInfo();
+    forbidInfo.setIpSet(Set.of("11.22.33.44", "55.66.77.88"));
+    commonConfig.setForbidInfo(forbidInfo);
+
+    ReflectionTestUtils.setField(filter, "commonConfig", commonConfig);
+
+    filter.filter(exchange, chain);
+
+    assertThat(exchange.getResponse().getHeaders().getFirst(Constants.RESPONSE_CODE))
+        .isEqualTo(String.valueOf(ErrorEnum.IP_IS_FORBID.getCode()));
+
+    verifyNoMoreInteractions(chain);
+
+  }
+
+  @Test
+  public void testIpInList() {
+    Set<String> whiteIpList = Set.of("220.243.144.12-220.243.144.22");
+    assertThat(IpUtil.isInIpList("10.23.12.12", whiteIpList)).isEqualTo(false);
+    assertThat(IpUtil.isInIpList("172.22.231.123", whiteIpList)).isEqualTo(false);
+    assertThat(IpUtil.isInIpList("172.32.231.123", whiteIpList)).isEqualTo(false);
+    assertThat(IpUtil.isInIpList("220.243.144.14", whiteIpList)).isEqualTo(true);
+    assertThat(IpUtil.isInIpList("220.243.144.12", whiteIpList)).isEqualTo(true);
+    assertThat(IpUtil.isInIpList("220.243.144.11", whiteIpList)).isEqualTo(false);
+    assertThat(IpUtil.isInIpList("220.243.144.22", whiteIpList)).isEqualTo(true);
+    assertThat(IpUtil.isInIpList("220.243.141.241", whiteIpList)).isEqualTo(false);
+    assertThat(IpUtil.isInIpList("220.243.141.12", whiteIpList)).isEqualTo(false);
+    assertThat(IpUtil.isInIpList("220.243.141.311", whiteIpList)).isEqualTo(false);
   }
 }
