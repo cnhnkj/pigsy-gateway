@@ -12,4 +12,6 @@ public class HeaderConstants {
 
   //对端ip
   public final static String REMOTE_IP = "remoteip";
+
+  public final static String X_PIGSY_PROFILE = "x-pigsy-profile";
 }
