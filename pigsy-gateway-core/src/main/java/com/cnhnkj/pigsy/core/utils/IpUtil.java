@@ -33,7 +33,7 @@ import org.springframework.web.server.ServerWebExchange;
 public class IpUtil {
 
   public static String getRealIp(ServerWebExchange exchange) {
-    String realIp = exchange.getRequest().getHeaders().getFirst(HeaderConstants.REAL_IP);
+    String realIp = exchange.getRequest().getHeaders().getFirst(HeaderConstants.X_REAL_IP);
     if (StringUtils.isNotBlank(realIp)) {
       return realIp;
     }

@@ -17,6 +17,8 @@
 
 package com.cnhnkj.pigsy.core.constants;
 
+import com.google.common.collect.Lists;
+import java.util.List;
 import org.springframework.core.Ordered;
 
 /**
@@ -25,8 +27,50 @@ import org.springframework.core.Ordered;
 
 public class Constants {
 
+  public static class AppId {
+
+    //ANDROID客户端
+    public final static String ANDROID_APP_ID = "1";
+    //IOS客户端
+    public final static String IOS_APP_ID = "2";
+    //客户端内嵌页面
+    public final static String WEB_IN_APP_ID = "3";
+
+    //微信小程序
+    public final static String WECHAT_MINI_PROGRAM_ID = "11";
+
+    //支付宝小程序
+    public final static String ALIPAY_MINI_PROGRAM_APP_ID = "12";
+
+    //百度小程序
+    public final static String BAIDU_MINI_PROGRAM_ID = "13";
+
+    //pc站
+    public final static String PC_ID = "31";
+
+    //m站
+    public final static String MOBILE_H5_ID = "41";
+  }
+
+  public static class Secret {
+    public final static int APP_TYPE = 1;
+    public final static int MINI_PROGRAM_TYPE = 2;
+    public final static int PC_TYPE = 3;
+    public final static int MOBILE_H5_TYPE = 4;
+  }
+
+
+  public final static List<String> IN_APP_ID_LIST = Lists
+      .newArrayList(AppId.ANDROID_APP_ID, AppId.IOS_APP_ID, AppId.WEB_IN_APP_ID);
+
+  public final static List<String> OUT_APP_ID_LIST = Lists
+      .newArrayList(AppId.WECHAT_MINI_PROGRAM_ID, AppId.ALIPAY_MINI_PROGRAM_APP_ID, AppId.BAIDU_MINI_PROGRAM_ID, AppId.PC_ID,
+          AppId.MOBILE_H5_ID);
+
+
   //http请求相关的常量
   public static class Request {
+
     public final static String REAL_IP = "real_ip";
     public final static String PATH = "path";
     public final static String DURATION = "duration";
@@ -38,6 +82,7 @@ public class Constants {
 
   //http返回相关的常量
   public static class Response {
+
     public final static String HTTP_STATUS = "http_status";
     public final static String CODE = "code";
     public final static String OK_CODE = "0";
@@ -47,6 +92,7 @@ public class Constants {
 
 
   public static class GlobalOrder {
+
     public final static int GUARD_FILTER_ORDER = 0;
     public final static int ACCESS_LOG_ORDER = Ordered.HIGHEST_PRECEDENCE;
   }

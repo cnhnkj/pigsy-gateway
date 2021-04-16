@@ -32,12 +32,12 @@ public class SecretConfig {
 
   //给app使用的密钥
   private MasterSlaveConfig app;
-  //给h5使用的密钥
-  private MasterSlaveConfig h5;
+  //给移动端h5使用的密钥
+  private MasterSlaveConfig mobileH5;
   //给pc站使用的密钥
   private MasterSlaveConfig pc;
-  //给微信小程序使用的密钥
-  private MasterSlaveConfig wxApp;
+  //给小程序使用的密钥
+  private MasterSlaveConfig miniProgram;
   //给内部系统使用的密钥
   private MasterSlaveConfig jwt;
 

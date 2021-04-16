@@ -19,10 +19,13 @@ package com.cnhnkj.pigsy.core.errors;
 
 import static com.cnhnkj.pigsy.core.errors.ErrorEnum.PIGSY_INNER_ERROR;
 
+import lombok.Getter;
+
 /**
  * @author longzhe[longzhe@cnhnkj.com]
  */
 
+@Getter
 public class PigsyGatewayException extends RuntimeException {
 
   private final String message;

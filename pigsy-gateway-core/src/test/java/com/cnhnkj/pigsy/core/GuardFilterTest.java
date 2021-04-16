@@ -63,7 +63,7 @@ public class GuardFilterTest {
   @Test
   public void testRequestRealIpFromRealIpHeader() {
     ServerWebExchange exchange = MockServerWebExchange.from(MockServerHttpRequest.get("endpoint")
-        .header(HeaderConstants.REAL_IP, "127.0.0.1", "127.0.0.2")
+        .header(HeaderConstants.X_REAL_IP, "127.0.0.1", "127.0.0.2")
         .header(HeaderConstants.X_FORWARDED_FOR, "127.0.0.6, 127.0.0.5, 127.0.0.4")
         .header(HeaderConstants.REMOTE_IP, "127.0.0.10").build());
     String realIp = IpUtil.getRealIp(exchange);
