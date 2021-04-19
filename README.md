@@ -48,7 +48,7 @@
   
 ### *网关调用外部服务*
 
-在网关里面通过`WebClient.Builder`的异步的方式来调用外部的`auth`服务，主要是用于验证`header`里面的`token`，
+在网关里面通过`WebClient.Builder`的异步方式来调用外部的`pigsy-auth`服务，主要是用于验证`header`里面的`token`，
 验证成功的话，则把`token`转换成`userId`然后传给具体的服务。
 
 
