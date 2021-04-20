@@ -150,8 +150,6 @@ public class ParamCheckGatewayFilterFactory extends AbstractGatewayFilterFactory
       //可能需要的参数检查
       getMaybeHeader(exchange, headers, HeaderConstants.X_CLIENT_TOKEN);
       getMaybeHeader(exchange, headers, HeaderConstants.X_CLIENT_LOCATION);
-      getMaybeHeader(exchange, headers, HeaderConstants.X_MINI_PROGRAM_ACCESS_TOKEN);
-      getMaybeHeader(exchange, headers, HeaderConstants.X_MINI_PROGRAM_ID);
 
       return modifyHeaderAndFilter(exchange, chain);
     };

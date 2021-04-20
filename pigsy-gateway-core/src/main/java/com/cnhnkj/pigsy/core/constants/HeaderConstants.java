@@ -62,15 +62,11 @@ public class HeaderConstants {
   //网络类型(不一定有)
   public final static String X_CLIENT_NET = "x-client-net";
 
-
-  //小程序端登录的token标志
-  public final static String X_MINI_PROGRAM_ACCESS_TOKEN = "x-mini-program-token";
-  //用于标志对应的小程序的id
-  public final static String X_MINI_PROGRAM_ID = "x-mini-program-id";
-
-
   //对端ip
   public final static String REMOTE_IP = "remoteip";
   //网关的环境
   public final static String X_PIGSY_PROFILE = "x-pigsy-profile";
+
+  //通过token转换得到的userId
+  public final static String X_USER_ID = "x-user-id";
 }

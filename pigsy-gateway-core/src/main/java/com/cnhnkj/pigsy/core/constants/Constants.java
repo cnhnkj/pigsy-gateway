@@ -53,15 +53,17 @@ public class Constants {
   }
 
   public static class Secret {
+
     public final static int APP_TYPE = 1;
     public final static int MINI_PROGRAM_TYPE = 2;
     public final static int PC_TYPE = 3;
     public final static int MOBILE_H5_TYPE = 4;
   }
 
-
   public final static List<String> IN_APP_ID_LIST = Lists
       .newArrayList(AppId.ANDROID_APP_ID, AppId.IOS_APP_ID, AppId.WEB_IN_APP_ID);
+
+
 
   public final static List<String> OUT_APP_ID_LIST = Lists
       .newArrayList(AppId.WECHAT_MINI_PROGRAM_ID, AppId.ALIPAY_MINI_PROGRAM_APP_ID, AppId.BAIDU_MINI_PROGRAM_ID, AppId.PC_ID,
@@ -71,7 +73,7 @@ public class Constants {
   //http请求相关的常量
   public static class Request {
 
-    public final static String REAL_IP = "real_ip";
+    public final static String REAL_IP = "realIp";
     public final static String PATH = "path";
     public final static String DURATION = "duration";
     public final static String HEADER = "header";

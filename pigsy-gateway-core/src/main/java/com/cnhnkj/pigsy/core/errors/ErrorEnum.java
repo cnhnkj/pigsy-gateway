@@ -29,6 +29,7 @@ import lombok.Getter;
 @Getter
 public enum ErrorEnum {
 
+  //服务端异常
   PIGSY_INNER_ERROR(700500, "网关未知错误"),
   PIGSY_EXCEPTION_ERROR(700501, "网关未知错误"),
   SERVICE_IS_MAINTENANCE(700502, "访问的服务正在维护中"),
@@ -36,13 +37,16 @@ public enum ErrorEnum {
   HEADER_IS_FORBID(700504, "对应的请求头已经被禁止"),
   IP_IS_FORBID(700505, "对应的请求ip已经被禁止"),
 
-
+  //客户端异常
   REQUEST_URI_PATH_ERROR(700401, "访问的接口路径错误"),
   REAL_IP_INVALID(700402, "真实ip地址获取失败"),
   REQUEST_PARAM_ERROR(700403, "客户端传入的参数错误"),
   SERVICE_NOT_FOUND(700404, "没有找到对应的服务"),
   CLIENT_VERSION_NOT_SUPPORT(700405, "当前客户端版本过低"),
   CLIENT_LOCAL_TIME_ERROR(700406, "检测到您的手机时间设置异常，请在手机的设置-系统设置-时间设置中进行调整"),
+
+  //逻辑异常
+  USER_NOT_LOGIN(700601, "当前用户没登录,对不起,请重新登陆"),
   ;
 
 
