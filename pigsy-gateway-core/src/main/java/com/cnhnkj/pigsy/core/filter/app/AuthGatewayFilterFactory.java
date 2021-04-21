@@ -53,8 +53,6 @@ public class AuthGatewayFilterFactory extends AbstractGatewayFilterFactory<AuthG
 
   private final PathPatternParser pathPatternParser = new PathPatternParser();
 
-  private static final boolean MUST_LOGIN = true;
-
   @Resource
   private ObjectMapper objectMapper;
 
@@ -100,7 +98,7 @@ public class AuthGatewayFilterFactory extends AbstractGatewayFilterFactory<AuthG
       response.setStatusCode(HttpStatus.OK);
       return ResponseUtil.sendErrorMsg(objectMapper, response, ErrorEnum.USER_NOT_LOGIN);
     } else {
-      return authService.appAuth(ticket, response, exchange, chain, MUST_LOGIN);
+      return authService.appAuth(ticket, response, exchange, chain, true);
     }
   }
 

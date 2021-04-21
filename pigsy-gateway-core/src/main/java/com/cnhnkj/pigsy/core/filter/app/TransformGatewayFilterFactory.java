@@ -46,8 +46,6 @@ public class TransformGatewayFilterFactory extends AbstractGatewayFilterFactory<
 
   private final PathPatternParser pathPatternParser = new PathPatternParser();
 
-  private static final boolean MUST_LOGIN = false;
-
   @Resource
   private AuthService authService;
 
@@ -82,7 +80,7 @@ public class TransformGatewayFilterFactory extends AbstractGatewayFilterFactory<
         return chain.filter(exchange);
       }
 
-      return authService.appAuth(token, response, exchange, chain, MUST_LOGIN);
+      return authService.appAuth(token, response, exchange, chain, false);
     };
   }
 
