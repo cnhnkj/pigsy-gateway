@@ -85,7 +85,7 @@
     <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
     <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
 
-    <skipTests>false</skipTests>
+    <skipTests>true</skipTests>
   </properties>
 
   <dependencyManagement>
