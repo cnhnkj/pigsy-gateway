@@ -15,7 +15,7 @@
  *
  */
 
-package com.cnhnkj.pigsy.core.config;
+package com.cnhnkj.pigsy.auth.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -26,25 +26,12 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
  */
 
 @Data
-@ConfigurationProperties(prefix = "pigsy.secret")
+@ConfigurationProperties(prefix = "auth.secret.jwt")
 @RefreshScope
-public class SecretConfig {
+public class JwtSecretConfig {
 
-  //给app使用的密钥
-  private MasterSlaveConfig app;
-  //给移动端h5使用的密钥
-  private MasterSlaveConfig mobileH5;
-  //给pc站使用的密钥
-  private MasterSlaveConfig pc;
-  //给小程序使用的密钥
-  private MasterSlaveConfig miniProgram;
+  private String publicKey;
 
-  @Data
-  public static class MasterSlaveConfig {
+  private String privateKey;
 
-    //主密钥
-    private String master;
-    //备用密钥（用于密钥替换）
-    private String slave;
-  }
 }

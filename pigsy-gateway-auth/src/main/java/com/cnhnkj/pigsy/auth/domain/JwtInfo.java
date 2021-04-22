@@ -15,36 +15,29 @@
  *
  */
 
-package com.cnhnkj.pigsy.core.config;
+package com.cnhnkj.pigsy.auth.domain;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 
 /**
  * @author longzhe[longzhe@cnhnkj.com]
  */
 
 @Data
-@ConfigurationProperties(prefix = "pigsy.secret")
-@RefreshScope
-public class SecretConfig {
+public class JwtInfo {
 
-  //给app使用的密钥
-  private MasterSlaveConfig app;
-  //给移动端h5使用的密钥
-  private MasterSlaveConfig mobileH5;
-  //给pc站使用的密钥
-  private MasterSlaveConfig pc;
-  //给小程序使用的密钥
-  private MasterSlaveConfig miniProgram;
+  @Schema(description = "钉钉的id")
+  private String dingId;
+  @Schema(description = "姓名")
+  private String name;
+  @Schema(description = "邮箱")
+  private String email;
+  @Schema(description = "手机")
+  private String phone;
+  @Schema(description = "角色(用于权限)")
+  private String role;
+  @Schema(description = "部门")
+  private String department;
 
-  @Data
-  public static class MasterSlaveConfig {
-
-    //主密钥
-    private String master;
-    //备用密钥（用于密钥替换）
-    private String slave;
-  }
 }

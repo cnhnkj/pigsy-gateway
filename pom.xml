@@ -73,7 +73,7 @@
     <spring.cloud.version>Hoxton.SR10</spring.cloud.version>
     <lombok.version>1.18.12</lombok.version>
     <springdoc-openapi-ui.version>1.5.6</springdoc-openapi-ui.version>
-    <java-jwt.version>3.4.1</java-jwt.version>
+    <java-jwt.version>3.15.0</java-jwt.version>
     <apollo.verion>1.8.0</apollo.verion>
     <sentry.version>1.7.30</sentry.version>
 

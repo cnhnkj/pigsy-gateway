@@ -20,8 +20,11 @@ package com.cnhnkj.pigsy.core.filter.app;
 import com.cnhnkj.pigsy.core.constants.HeaderConstants;
 import com.cnhnkj.pigsy.core.errors.ErrorEnum;
 import com.cnhnkj.pigsy.core.invoke.AuthServiceInvoker;
+import com.cnhnkj.pigsy.core.invoke.AuthServiceInvoker.JwtInfo;
 import com.cnhnkj.pigsy.core.utils.ResponseUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import javax.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -66,6 +69,32 @@ public class AuthService {
             exchange.getAttributes().put(HeaderConstants.X_USER_ID, userId);
             exchange.mutate().request(serverHttpRequest).build();
             return chain.filter(exchange);
+          }
+        });
+  }
+
+  public Mono<Void> backendAuth(String jwt, ServerHttpResponse response, ServerWebExchange exchange, GatewayFilterChain chain) {
+    return authServiceInvoker.getUserInfoByJwt(jwt)
+        .flatMap(jwtInfoBaseResult -> {
+          if (jwtInfoBaseResult.getCode() != 0 || StringUtils
+              .isEmpty(jwtInfoBaseResult.getData()) || StringUtils.isEmpty(jwtInfoBaseResult.getData().getDingId())) {
+            String msg = String.format("jwt鉴权失败，jwt是%s, 错误信息是%s", jwt, jwtInfoBaseResult.getMsg());
+            log.warn(msg);
+            return ResponseUtil.sendErrorMsg(objectMapper, response, ErrorEnum.JWT_HEADER_IS_ERROR);
+          } else {
+            JwtInfo jwtInfo = jwtInfoBaseResult.getData();
+            try {
+              String jwtInfoBase64 = new String(
+                  Base64.getEncoder().encode(objectMapper.writeValueAsString(jwtInfo).getBytes(StandardCharsets.UTF_8)));
+              ServerHttpRequest serverHttpRequest = exchange.getRequest().mutate()
+                  .header(HeaderConstants.X_JWT_INFO, jwtInfoBase64).build();
+              exchange.getAttributes().put(HeaderConstants.X_JWT_INFO, jwtInfoBase64);
+              exchange.mutate().request(serverHttpRequest).build();
+              return chain.filter(exchange);
+            } catch (Exception e) {
+              return ResponseUtil.sendErrorMsg(objectMapper, response, ErrorEnum.JWT_HEADER_IS_ERROR);
+            }
+
           }
         });
   }

@@ -44,6 +44,8 @@ public enum ErrorEnum {
   SERVICE_NOT_FOUND(700404, "没有找到对应的服务"),
   CLIENT_VERSION_NOT_SUPPORT(700405, "当前客户端版本过低"),
   CLIENT_LOCAL_TIME_ERROR(700406, "检测到您的手机时间设置异常，请在手机的设置-系统设置-时间设置中进行调整"),
+  JWT_HEADER_IS_NULL(700407, "jwt头为空"),
+  JWT_HEADER_IS_ERROR(700408, "jwt头解析错误"),
 
   //逻辑异常
   USER_NOT_LOGIN(700601, "当前用户没登录,对不起,请重新登陆"),

@@ -18,6 +18,7 @@
 
 package com.cnhnkj.pigsy.auth.domain;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
@@ -27,8 +28,10 @@ import lombok.Data;
 @Data
 public class UserInfo {
 
+  @Schema(description = "用户id")
   private Long userId;
 
+  @Schema(description = "用户姓名")
   private String username;
 
 }

@@ -69,4 +69,6 @@ public class HeaderConstants {
 
   //通过token转换得到的userId
   public final static String X_USER_ID = "x-user-id";
+  //通过jwt的头获取用户信息
+  public final static String X_JWT_INFO = "x-jwt-info";
 }

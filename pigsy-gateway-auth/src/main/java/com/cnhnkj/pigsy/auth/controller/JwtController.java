@@ -17,6 +17,7 @@
 
 package com.cnhnkj.pigsy.auth.controller;
 
+import com.cnhnkj.pigsy.auth.domain.JwtInfo;
 import com.cnhnkj.pigsy.auth.service.JwtService;
 import com.cnhnkj.pigsy.common.BaseResult;
 import com.cnhnkj.pigsy.common.BaseResultCode;
@@ -45,12 +46,26 @@ public class JwtController {
 
   @RequestMapping(value = "/jwt/check", method = RequestMethod.POST)
   @Operation(description = "jwt的验证接口")
-  public BaseResult checkJwt(
+  public BaseResult<JwtInfo> checkJwt(
       @RequestParam @Parameter(description = "用于校验的jwt") String jwt) {
     try {
-      return BaseResult.success();
+      JwtInfo jwtInfo = jwtService.checkJwt(jwt);
+      return BaseResult.success(jwtInfo);
     } catch (Exception e) {
       log.warn("校验jwt信息失败，jwt: {}", jwt, e);
+      return BaseResult.fail(BaseResultCode.SERVER_INNER_ERROR.getCode(), BaseResultCode.SERVER_INNER_ERROR.getMsg());
+    }
+  }
+
+  @RequestMapping(value = "/jwt/sign/create", method = RequestMethod.POST)
+  @Operation(description = "jwt的签名生成")
+  public BaseResult<String> createJwtSign(
+      @RequestParam @Parameter(description = "dingId") String dingId) {
+    try {
+      String sign = jwtService.createJwtSign(dingId);
+      return BaseResult.success(sign);
+    } catch (Exception e) {
+      log.warn("校验jwt信息失败，dingId: {}", dingId, e);
       return BaseResult.fail(BaseResultCode.SERVER_INNER_ERROR.getCode(), BaseResultCode.SERVER_INNER_ERROR.getMsg());
     }
   }

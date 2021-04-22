@@ -43,6 +43,8 @@ public class AuthServiceInvoker {
 
   private static final String AUTH_GET_INFO_BY_TICKET_URL = "http://pigsy-auth/internal/auth/userInfo/by/token";
 
+  private static final String AUTH_GET_INFO_BY_JWT_URL = "http://pigsy-auth/internal/auth/jwt/check";
+
   public Mono<BaseResult<UserInfo>> getUserInfoByToken(String token) {
     MultiValueMap<String, String> formData = new LinkedMultiValueMap<>();
     formData.add("token", token);
@@ -52,10 +54,36 @@ public class AuthServiceInvoker {
         }).onErrorReturn(BaseResult.fail(-1, "服务器异常,请稍后再试"));
   }
 
+  public Mono<BaseResult<JwtInfo>> getUserInfoByJwt(String jwt) {
+    MultiValueMap<String, String> formData = new LinkedMultiValueMap<>();
+    formData.add("jwt", jwt);
+    return builder.build().post().uri(AUTH_GET_INFO_BY_JWT_URL).contentType(
+        MediaType.APPLICATION_FORM_URLENCODED).body(BodyInserters.fromFormData(formData)).retrieve()
+        .bodyToMono(new ParameterizedTypeReference<BaseResult<JwtInfo>>() {
+        }).onErrorReturn(BaseResult.fail(-1, "服务器异常,请稍后再试"));
+  }
+
   @Data
   public static class UserInfo {
 
     private Long userId;
     private String username;
+  }
+
+  @Data
+  public static class JwtInfo {
+
+    //钉钉的id
+    private String dingId;
+    //姓名
+    private String name;
+    //邮箱
+    private String email;
+    //手机
+    private String phone;
+    //角色
+    private String role;
+    //部门
+    private String department;
   }
 }
