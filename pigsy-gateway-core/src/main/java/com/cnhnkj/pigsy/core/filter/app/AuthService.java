@@ -56,8 +56,7 @@ public class AuthService {
           if (userInfoBaseResult.getCode() != 0 || StringUtils
               .isEmpty(userInfoBaseResult.getData()) || StringUtils.isEmpty(userInfoBaseResult.getData().getUserId())) {
             if (mustLogin) {
-              String msg = String.format("token鉴权失败，token是%s, 错误信息是%s", token, userInfoBaseResult.getMsg());
-              log.warn(msg);
+              log.warn(String.format("token鉴权失败，token是%s, 错误信息是%s", token, userInfoBaseResult.getMsg()));
               return ResponseUtil.sendErrorMsg(objectMapper, response, ErrorEnum.USER_NOT_LOGIN);
             } else {
               return chain.filter(exchange);
@@ -78,14 +77,13 @@ public class AuthService {
         .flatMap(jwtInfoBaseResult -> {
           if (jwtInfoBaseResult.getCode() != 0 || StringUtils
               .isEmpty(jwtInfoBaseResult.getData()) || StringUtils.isEmpty(jwtInfoBaseResult.getData().getDingId())) {
-            String msg = String.format("jwt鉴权失败，jwt是%s, 错误信息是%s", jwt, jwtInfoBaseResult.getMsg());
-            log.warn(msg);
+            log.warn(String.format("jwt鉴权失败，jwt是%s, 错误信息是%s", jwt, jwtInfoBaseResult.getMsg()));
             return ResponseUtil.sendErrorMsg(objectMapper, response, ErrorEnum.JWT_HEADER_IS_ERROR);
           } else {
             JwtInfo jwtInfo = jwtInfoBaseResult.getData();
             try {
-              String jwtInfoBase64 = new String(
-                  Base64.getEncoder().encode(objectMapper.writeValueAsString(jwtInfo).getBytes(StandardCharsets.UTF_8)));
+              String jwtInfoBase64 = new String(Base64.getEncoder()
+                  .encode(objectMapper.writeValueAsString(jwtInfo).getBytes(StandardCharsets.UTF_8)));
               ServerHttpRequest serverHttpRequest = exchange.getRequest().mutate()
                   .header(HeaderConstants.X_JWT_INFO, jwtInfoBase64).build();
               exchange.getAttributes().put(HeaderConstants.X_JWT_INFO, jwtInfoBase64);
@@ -94,7 +92,6 @@ public class AuthService {
             } catch (Exception e) {
               return ResponseUtil.sendErrorMsg(objectMapper, response, ErrorEnum.JWT_HEADER_IS_ERROR);
             }
-
           }
         });
   }

@@ -59,7 +59,7 @@ public class JwtService {
     String dingId = objectMapper.readTree(payload).get("dingId").asText();
 
     String value = stringRedisTemplate.opsForValue().get(dingId);
-    if(!Strings.isNullOrEmpty(value)) {
+    if (!Strings.isNullOrEmpty(value)) {
       return objectMapper.readValue(value, JwtInfo.class);
     } else {
       throw new RuntimeException("用户不存在");
@@ -87,7 +87,7 @@ public class JwtService {
   private JwtInfo createJwtInfo(String dingId) {
     JwtInfo jwtInfo = new JwtInfo();
     jwtInfo.setDingId(dingId);
-    String name = RandomStringUtils.random(6);
+    String name = RandomStringUtils.randomAlphabetic(6);
     jwtInfo.setName(name);
     String phone = RandomStringUtils.randomNumeric(13);
     jwtInfo.setPhone(phone);

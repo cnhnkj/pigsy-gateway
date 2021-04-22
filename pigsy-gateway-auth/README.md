@@ -31,6 +31,7 @@ nohup java -jar target/pigsy-gateway-auth.jar --spring.profiles.active=test > pi
 - 通过点击对应服务的链接，可以跳转到对应的`swagger-ui`页面查看对应的接口说明
 - 通过`/internal/auth/token/create`来根据`userId`来获得对应的`token`
 
+
 #### 请求命令
 ```
 curl -X 'POST' \
@@ -71,3 +72,8 @@ curl -X 'POST' \
   }
 }
 ```
+
+
+- 通过`/internal/auth/jwt/sign/create` 来根据`dingId`来生成对应的jwt的`sign`
+
+- 通过`/internal/auth/jwt/check` 来校验`sign`，并根据`dingId`查得用户信息进行返回
