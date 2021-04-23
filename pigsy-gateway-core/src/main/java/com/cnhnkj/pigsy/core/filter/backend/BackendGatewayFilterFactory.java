@@ -53,7 +53,7 @@ import org.springframework.web.util.pattern.PathPatternParser;
 @EnableConfigurationProperties(SecretConfig.class)
 public class BackendGatewayFilterFactory extends AbstractGatewayFilterFactory<BackendGatewayFilterFactory.Config> {
 
-  private static final String AUTH_PATTERN = "/{serviceId}/hsww/**";
+  private static final String AUTH_PATTERN = "/{serviceId}/backend/**";
 
   private final PathPatternParser pathPatternParser = new PathPatternParser();
 
@@ -62,9 +62,6 @@ public class BackendGatewayFilterFactory extends AbstractGatewayFilterFactory<Ba
 
   @Resource
   private AuthService authService;
-
-  @Resource
-  private SecretConfig secretConfig;
 
   @Value("${spring.profiles.active}")
   private String profile;

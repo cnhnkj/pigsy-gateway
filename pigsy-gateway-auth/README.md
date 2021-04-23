@@ -76,4 +76,49 @@ curl -X 'POST' \
 
 - 通过`/internal/auth/jwt/sign/create` 来根据`dingId`来生成对应的jwt的`sign`
 
+#### 请求命令
+
+```
+curl -X 'POST' \
+  'http://127.0.0.1:12001/internal/auth/jwt/sign/create?dingId=12345' \
+  -H 'accept: */*' \
+  -d ''
+```
+
+#### 返回结果
+
+```
+{
+  "code": 0,
+  "msg": "success",
+  "data": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkaW5nSWQiOiIxMjM0NSIsImlzcyI6InBpZ3N5LWF1dGgiLCJleHAiOjE2MTkyMzUxNDUsImlhdCI6MTYxOTE0ODc0NX0.ipe8DxoqttuAQ5D2NngCfXVw4PHO0aV1flLmT9afcxSEsmh0vaGUzTwKLWrbb3p8CPqbPC8K4JoKGeWlr6dD5iIR-DUnAp7fIaWHtIiAvPIIWS7kiv527F0Jrerv9phhVkDcZ2h58nxBg4Ta7r61XZ3ndlDJk9cbZiXwjP8xKbRvN-va-VUqaQKYuFFb0cDWc9QSVEf6CGH_y2vMJQLv2xwdFp4GO9obdpiH8mcpQFeNEOzJFGDDkPSEdrMJoXQRMhGJgMm05RmYJJWX9wq0EHJ5-IGkJQsgu-ruIbdZU8V6rJtg1Twf0Culg4u8GF2PI-oUlXidYxhOkKUJpYN8uA"
+}
+```
+
 - 通过`/internal/auth/jwt/check` 来校验`sign`，并根据`dingId`查得用户信息进行返回
+
+#### 请求数据
+
+```
+curl -X 'POST' \
+  'http://127.0.0.1:12001/internal/auth/jwt/check?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkaW5nSWQiOiIxMjM0NSIsImlzcyI6InBpZ3N5LWF1dGgiLCJleHAiOjE2MTkyMzUxNDUsImlhdCI6MTYxOTE0ODc0NX0.ipe8DxoqttuAQ5D2NngCfXVw4PHO0aV1flLmT9afcxSEsmh0vaGUzTwKLWrbb3p8CPqbPC8K4JoKGeWlr6dD5iIR-DUnAp7fIaWHtIiAvPIIWS7kiv527F0Jrerv9phhVkDcZ2h58nxBg4Ta7r61XZ3ndlDJk9cbZiXwjP8xKbRvN-va-VUqaQKYuFFb0cDWc9QSVEf6CGH_y2vMJQLv2xwdFp4GO9obdpiH8mcpQFeNEOzJFGDDkPSEdrMJoXQRMhGJgMm05RmYJJWX9wq0EHJ5-IGkJQsgu-ruIbdZU8V6rJtg1Twf0Culg4u8GF2PI-oUlXidYxhOkKUJpYN8uA' \
+  -H 'accept: */*' \
+  -d ''
+```
+
+#### 返回结果
+
+```
+{
+  "code": 0,
+  "msg": "success",
+  "data": {
+    "dingId": "12345",
+    "name": "oaGeFi",
+    "email": "oaGeFi@cnhnkj.com",
+    "phone": "5138085889738",
+    "role": "admin",
+    "department": "tech"
+  }
+}
+```
