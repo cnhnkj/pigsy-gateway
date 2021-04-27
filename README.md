@@ -63,7 +63,9 @@
 - `BackendGatewayFilterFactory` 这个过滤器主要用于内部系统的鉴权, 
   通过获取`Authorization`头，然后转给`pigsy-auth`进行`jwt`模式验证，来判断是否正常登录，然后返回对应内部用户的相关信息
 
+#### openapi类的主要过滤器
 
+- `OpenapiGatewayFilterFactory` 这个过滤器为第三方外部服务提供入口，另外还可以通过`ipWhiteSet`配置相关接口的白名单的功能
   
 ### *网关调用外部服务*
 
