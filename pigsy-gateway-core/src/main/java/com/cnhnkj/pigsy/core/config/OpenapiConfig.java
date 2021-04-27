@@ -19,6 +19,7 @@ package com.cnhnkj.pigsy.core.config;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -33,7 +34,7 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 public class OpenapiConfig {
 
   //开放平台服务名称对应的白名单ip
-  private Map<String, List<String>> ipWhiteList;
+  private Map<String, Set<String>> ipWhiteSet;
 
 
 }
