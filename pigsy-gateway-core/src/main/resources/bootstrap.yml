@@ -17,3 +17,6 @@ logging:
 
 server:
   port: 9876
+
+#sentry:
+#  dsn: xxx
