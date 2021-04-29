@@ -88,6 +88,11 @@ public class Constants {
     public final static String HTTP_STATUS = "http_status";
     public final static String CODE = "code";
     public final static String OK_CODE = "0";
+
+    public final static String SUCCESS = "success"; //正常返回
+    public final static String BUSINESS_ERROR = "business_error"; //业务异常
+    public final static String CLIENT_REQUEST_ERROR = "4xx_error"; //未知异常
+    public final static String SERVER_REQUEST_ERROR = "5xx_error"; //未知异常
   }
 
   public final static String PROFILE = "profile";
